@@ -27,9 +27,10 @@ public class TweetController {
   private TweetService service;
 
   @GetMapping
-  public Page<Tweet> list(Pageable page) {
+  public List<Tweet> list(Pageable page) {
     PageRequest pr = PageRequest.of(0, 5);
-    return service.findAll(pr);
+    Page<Tweet> data = service.findAll(pr);
+    return data.getContent();
   }
 
   @PostMapping
