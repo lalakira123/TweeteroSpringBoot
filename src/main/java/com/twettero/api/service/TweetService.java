@@ -3,7 +3,6 @@ package com.twettero.api.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -26,8 +25,8 @@ public class TweetService {
     return repository.findByUsername(username);
   }
 
-  public Tweet save(TweetDTO dto) {
-    return repository.save(new Tweet(dto));
+  public Tweet save(TweetDTO dto, String avatar) {
+    return repository.save(new Tweet(dto, avatar));
   }
 
 }
