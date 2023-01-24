@@ -1,6 +1,8 @@
 package com.twettero.api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,9 @@ public class SignInController {
   private SignInService service; 
 
   @PostMapping
-  public void create(@RequestBody @Valid SignInDTO req) {
+  public ResponseEntity<String> create(@RequestBody @Valid SignInDTO req) {
     service.save(req);
+    return ResponseEntity.status(HttpStatus.OK).body("Ok!");
   }
 
 }

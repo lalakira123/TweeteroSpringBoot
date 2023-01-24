@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,8 +51,9 @@ public class TweetController {
   }
 
   @PostMapping
-  public void create(@RequestBody @Valid TweetDTO req) {
+  public ResponseEntity<String> create(@RequestBody @Valid TweetDTO req) {
     service.save(req);
+    return ResponseEntity.status(HttpStatus.OK).body("Ok!");
   }
 
 }
