@@ -22,6 +22,10 @@ public class TweetService {
     return repository.findAll(page);
   }
 
+  public List<Tweet> findByName(String username) {
+    return repository.findByUsername(username);
+  }
+
   public Tweet save(TweetDTO dto) {
     return repository.save(new Tweet(dto));
   }

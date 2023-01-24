@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,11 @@ public class TweetController {
     PageRequest pr = PageRequest.of(0, 5);
     Page<Tweet> data = service.findAll(pr);
     return data.getContent();
+  }
+
+  @GetMapping("/{username}") 
+  public List<Tweet> listByName(@PathVariable String username) {
+    return service.findByName(username);
   }
 
   @PostMapping
