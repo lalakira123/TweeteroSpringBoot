@@ -12,7 +12,7 @@ import com.twettero.api.service.SignInService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/sign-up")
+@RequestMapping("/api/auth/sign-up")
 public class SignInController {
   
   @Autowired
